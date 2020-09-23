@@ -5,15 +5,16 @@
 
 <body>
   <p>
-    getUserMedia test
-    <button id="testBtn">start test</button>
-  <div id="logArea"></div>
+    getUserMedia
   </p>
+  <button id="testBtn" style="width:200px;height:50px;">start test</button>
+  <div id="logArea"></div>
   <script>
     window.onload = function () {
       const btn = document.getElementById('testBtn')
       const logArea = document.getElementById('logArea')
       btn.onclick = function () {
+        logArea.innerHTML = 'start test getUserMedia'
         if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
           console.log('getUserMedia supported.');
           logArea.innerHTML = 'getUserMedia supported.'
