@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head charset="utf-8"></head>
+
+<body>
+  <p>
+    getUserMedia test
+    <button id="testBtn">start test</button>
+  </p>
+  <script>
+    window.onload = function () {
+      const btn = document.getElementById('testBtn')
+      btn.onclick = function () {
+        if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+          console.log('getUserMedia supported.');
+          navigator.mediaDevices.getUserMedia(
+            // constraints - only audio needed for this app
+            {
+              audio: true
+            })
+
+            // Success callback
+            .then(function (stream) {
+              console.log('getUserMedia success', stream)
+            })
+
+            // Error callback
+            .catch(function (err) {
+              console.log('The following getUserMedia error occured: ' + err);
+            }
+            );
+        } else {
+          console.log('getUserMedia not supported on your browser!');
+        }
+      }
+    }
+  </script>
+</body>
+
+</html>
