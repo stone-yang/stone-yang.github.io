@@ -7,13 +7,16 @@
   <p>
     getUserMedia test
     <button id="testBtn">start test</button>
+  <div id="logArea"></div>
   </p>
   <script>
     window.onload = function () {
       const btn = document.getElementById('testBtn')
+      const logArea = document.getElementById('logArea')
       btn.onclick = function () {
         if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
           console.log('getUserMedia supported.');
+          logArea.innerHTML = 'getUserMedia supported.'
           navigator.mediaDevices.getUserMedia(
             // constraints - only audio needed for this app
             {
@@ -23,6 +26,7 @@
             // Success callback
             .then(function (stream) {
               console.log('getUserMedia success', stream)
+              logArea.innerHTML = 'getUserMedia success'
             })
 
             // Error callback
@@ -32,6 +36,7 @@
             );
         } else {
           console.log('getUserMedia not supported on your browser!');
+          logArea.innerHTML = 'getUserMedia not supported on your browser!'
         }
       }
     }
